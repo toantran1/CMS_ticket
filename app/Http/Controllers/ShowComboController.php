@@ -30,7 +30,6 @@ class ShowComboController extends Controller
         'qty' => $req->uqty_ticket,
         'status' => $req->ustatus
         ];
-dd($req->id);
         DB::table('tbl_comboTicket')->where('combo_id',$req->id)->update($data);
         return redirect()->back();
 

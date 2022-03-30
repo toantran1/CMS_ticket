@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ComboTicket;
+use App\manageTicket;
 class ManageTicketController extends Controller
 {
     public function index(){
         return view('pages.index');
     }
     public function manage_ticket(){
-        return view('pages.manageTicket'); 
+        $manageTicket = manageTicket::all();
+        return view('pages.manageTicket')->with(compact('manageTicket')); 
     }
     public function list_ticket(){
         return view('pages.listComboTicket'); 

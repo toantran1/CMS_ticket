@@ -151,10 +151,10 @@
                 $qty = $combo->qty;
                 ?>
 
-                @if($qty != null)
+                @if($qty != null && $priceOfCombo != null)
                 <td><span class="price_combo">{{number_format(floatval($priceOfCombo),0,',','.')}}</span> VNĐ/<span class="qty_combo">{{$combo->qty}} </span>vé</td>
                 @else
-                <td><span class="price_combo">{{$combo->priceCombo}}</span></td>
+                <td><span class="price_combo">--</span></td>
                 @endif
 
                 <?php

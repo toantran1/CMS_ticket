@@ -3253,7 +3253,22 @@ box-sizing: border-box;
 border-radius: 4px;
 
 }
+.status-endDate{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 8px 12px;
 
+color:#919DBA;
+background: #EAF1F8;
+/* promomote */
+
+border: 1px solid #919DBA;
+box-sizing: border-box;
+border-radius: 4px;
+
+}
 .status-unact{
     display: flex;
 flex-direction: row;
@@ -3268,10 +3283,13 @@ background: #F8EBE8;
 border: 1px solid #FD5959;
 box-sizing: border-box;
 border-radius: 4px;
-width:55px;
+width:90px;
 }
 
 img.green {
+    padding-right: 7px;
+}
+img.blue {
     padding-right: 7px;
 }
 img.red {
