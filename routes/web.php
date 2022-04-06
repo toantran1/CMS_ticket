@@ -24,3 +24,11 @@ Route::post('add-new-ticket','ManageTicketController@add_new_ticket');
 Route::get('/list-ticket','ShowComboController@show_combo');
 // Route::get('/edit-ticket/{id}', 'ShowComboController@show_detail_ticket');
 Route::post('/update-ticket', 'ShowComboController@update_ticket');
+
+Route::get('/filter','ManageTicketController@filter');
+// Route::get('/filter','ManageTicketController@filter_index');
+
+//check ticket
+route::get('/check-ticket','checkTicketController@check_ticket')->name('check-ticket');
+route::get('/check-ticket-filter','checkTicketController@check_ticket_filter');
+route::post('/update-status','checkTicketController@update_status');

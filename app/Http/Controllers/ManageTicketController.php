@@ -44,4 +44,26 @@ class ManageTicketController extends Controller
 
         return redirect('/list-ticket');
     }
+
+    // public function filter_index(){
+    //     return view('pages.filter');
+    // }
+    public function filter(Request $request){
+        $manageTicketFilter = manageTicket::query();
+        // if($request->has('apply_date')){
+        //     $manageTicketFilter->where('created_at','LIKE', '2022-04-05');
+        // }
+        if($request->has('exp')){
+            $manageTicketFilter->where('date_use','LIKE', '%'.$request->exp.'%');
+        }
+        if($request->has('optradio')){
+            $manageTicketFilter->where('status_use','LIKE', '%'.$request->optradio.'%');
+        }
+        if($request->has('gate')){
+            $manageTicketFilter->where('Gate','LIKE', '%'.$request->gate.'%');
+        }
+        $filters = $manageTicketFilter->get();
+        
+        return view('pages.filter',['filters'=>$filters]);
+    }
 }

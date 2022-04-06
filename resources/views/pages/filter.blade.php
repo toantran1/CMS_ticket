@@ -55,19 +55,19 @@
                             <div class="form-inline">
                                 <div class="form-group" style="padding-right:35px;  ">
                                     <label for="exampleInputPassword1">Từ ngày</label>
-                                    <input type="date" class="form-control2" id="exampleInputPassword3" name="apply_date">
+                                    <input type="date" class="form-control2" id="exampleInputPassword3" name="apply_date" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Đến ngày</label>
-                                    <input type="date" class="form-control2" id="exampleInputPassword3" name="exp">
+                                    <input type="date" class="form-control2" id="exampleInputPassword3" name="exp" >
                                 </div>
                             </div><br>
-
-
+                           
+                     
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Tình trạng sử dụng</label>
                                 <div style="display: block;" class="form-inline">
-                                    <div class="form-check form-group" style="padding-right: 50px;">
+                                    <div class="form-check form-group"  style="padding-right: 50px;">
                                         <input type="radio" class="form-check-input" id="radio1" name="optradio" value="">Tất cả
                                         <label class="form-check-label" for="radio1"></label>
                                     </div>
@@ -89,29 +89,29 @@
                                 <label for="exampleInputEmail1" class="form-label">Cổng Check-in</label>
                                 <div style="padding: 10px;" class="form-inline">
                                     <div class="form-group" style="margin-right: 150px;">
-                                        <input class="form-check-input" type="checkbox" id="all" name="gate" value="">
+                                        <input class="form-check-input" type="checkbox" id="all" value="all">
                                         <label class="form-check-label" for="all">Tất cả</label>
                                     </div>
                                     <div class="form-group" style="margin-right: 160px;">
-                                        <input class="form-check-input" type="checkbox" id="gate1" name="gate" value="Cổng 1">
+                                        <input class="form-check-input" type="checkbox" id="gate1" value="gate1">
                                         <label class="form-check-label" for="gate1">Cổng 1</label>
                                     </div>
                                     <div class="form-group">
-                                        <input class="form-check-input" type="checkbox" id="gate2" name="gate" value="Cổng 2">
+                                        <input class="form-check-input" type="checkbox" id="gate2" value="gate2">
                                         <label class="form-check-label" for="gate2">Cổng 2</label>
                                     </div>
                                 </div>
                                 <div style="padding: 10px;" class="form-inline">
-                                    <div class="form-group" style="padding-right: 141px;">
-                                        <input class="form-check-input" type="checkbox" id="gate3" name="gate" value="Cổng 3">
+                                    <div class="form-group" style="padding-right: 141px;" >
+                                        <input class="form-check-input" type="checkbox" id="gate3" value="gate3">
                                         <label class="form-check-label" for="gate3">Cổng 3</label>
                                     </div>
                                     <div class="form-group" style="padding-right: 156px;">
-                                        <input class="form-check-input" type="checkbox" id="gate4" name="gate" value="Cổng 4">
+                                        <input class="form-check-input" type="checkbox" id="gate4" value="gate4">
                                         <label class="form-check-label" for="gate4">Cổng 4</label>
                                     </div>
-                                    <div class="form-group">
-                                        <input class="form-check-input" type="checkbox" id="gate5" name="gate" value="Cổng 5">
+                                    <div class="form-group" >
+                                        <input class="form-check-input" type="checkbox" id="gate5" value="gate5">
                                         <label class="form-check-label" for="gate5">Cổng 5</label>
                                     </div>
                                 </div>
@@ -153,10 +153,10 @@
         </thead>
         <tbody>
 
-            @foreach($manageTicket as $manage)
+            @foreach($filters as $manage)
             <tr>
 
-                <td class="id">{{$manage->id}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$manage->package_code}}</td>
                 <td>{{$manage->quantity_ticket}}</td>
                 <?php
@@ -184,87 +184,19 @@
                 @if($status_use == 0 || $status_use == 2 )
                 <td><span>-</span></td>
                 @elseif($status_use == 1)
-                <td><span>{{$manage->Gate}}</span></td>
+                <td><span>Cổng 1</span></td>
                 @endif
 
-                @if($status_use == 0)
-                <td>
-                    <div class="top-nav clearfix">
-                        <ul class="" style="list-style:none;color: #999999;text-align:center;">
-                            <li class="dropdown">
-                                <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="color:#999999;">
-                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                </a>
-
-                                <ul class="dropdown-menu extended logout">
-                                    <li><a href="#" data-toggle="modal" data-target="#update-status" class="btnupdate"><i class=" fa fa-suitcase"></i>update status</a></li>
-
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                   
-                </td>
-                @elseif( $status_use == 1 || $status_use == 2 )
-                <td></td>
-                @endif
+                <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
 
             </tr>
             @endforeach
-            <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="update-status" class="modal fade">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <!-- <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button> -->
-                                    <h4 class="modal-title">Cập nhật</h4>
-                                </div>
-                                <div class="modal-body">
 
-                                    <form action="{{URL::to('update-status')}}" method="POST" role="form">
-                                        {{csrf_field()}}
-                                        <input type="hidden" id="id" value="" name="id"/>
-                                        <div class="form-group" style="padding:1em;">
-                                            <label for="exampleInputEmail1"style="padding-bottom:1em;" >Tình trạng sử dụng</label>
-                                            <select class="form-select" id="t_status" name="status_use" >
-                                                <option value="0">Chưa sử dụng</option>
-                                                <option value="1">Đã sử dụng</option>
-                                                <option value="2">Hết hạn</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="button-grp">
-
-                                            <button type="submit" class="btn-cancel">Lưu</button>
-                                            <button aria-hidden="true" data-dismiss="modal" type="submit" class="btn-save">Hủy</button>
-                                            <!-- <div class="clear"></div> -->
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
         </tbody>
     </table>
 
-    <script>
-        $(document).on('click','.btnupdate',function(){
-            console.log('opened');
-            var data= $(this).parents('tr');
-            $('#id').val(data.find('.id').text());
-         
-            console.log('get data success');
- 
-        });
-    </script>
-    <script>
-        $(document).ready(function(){
-            $('#datatable').Datatable({
-                select:true
-            });
-        });
-    </script>
+
 
 </div>
 

@@ -16,7 +16,7 @@
                 </li>
  
                 <li>
-                    <a href="#">
+                    <a class="{{\Request::route()->getName() == 'check-ticket' ? 'active' : ''}}" href="{{route('check-ticket')}}">
                         <img class="home-icons" src="images/doisoatve.png"/>
                         <span>Đối soát vé</span>
                     </a>

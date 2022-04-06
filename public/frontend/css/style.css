@@ -498,7 +498,7 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     border-radius:5px;
 }
 .dropdown-menu.extended.logout>li>a:hover i {
-    color:#ffa2a2;
+    color:#FFB800;
 }
 .dropdown-menu.extended.logout>li>a i {
     font-size:17px;
@@ -544,7 +544,8 @@ ul.top-menu>li>a:hover,ul.top-menu>li>a:focus {
     -webkit-border-radius:100px;
 }
 .top-nav .dropdown-menu.extended.logout {
-    top:50px;
+    top: 0px;
+    left: -162px;
 }
 .top-nav .nav .caret {
     border-bottom-color:#A4AABA;
@@ -3567,4 +3568,14 @@ flex: none;
 order: 1;
 flex-grow: 0;
 margin: 0px 4px;
+}
+
+img.filter {
+    position: absolute;
+    left: 17px;
+    width: 21px;
+}
+
+ul.dropdown-menu.extended.logout {
+    width: 170px !important;
 }
