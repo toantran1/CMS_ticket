@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 class ShowComboController extends Controller
 {
-  
+   
     public function show_combo(){
         $comboTicket = ComboTicket::all();
         return view('pages.listComboTicket')->with(compact('comboTicket'));
